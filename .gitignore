@@ -3,7 +3,6 @@
 *.project
 *.iml
 out/
-.idea/
 lib/
 
 # Mobile Tools for Java (J2ME)
