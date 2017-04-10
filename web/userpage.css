@@ -1,0 +1,22 @@
+body {
+    background: #9E9D9D;
+}
+.main {
+    background-color: #FFF;
+    width: 68%;
+    border: solid 1px #000;
+    margin: auto;
+}
+.userpage {
+    text-align: center;
+}
+.change-user {
+    margin-left: 35px;
+}
+.change-role {
+    margin-left: 35px;
+}
+.save-button {
+    margin-left: 300px;
+    margin-bottom: 35px;
+}
