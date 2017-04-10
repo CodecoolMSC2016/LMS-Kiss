@@ -13,8 +13,6 @@ public class CSVHandling {
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
 
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile));
-            String input;
             ArrayList<UserInfo> logins = new ArrayList<UserInfo>();
 
 

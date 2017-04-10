@@ -37,4 +37,12 @@
         <servlet-name>Table</servlet-name>
         <url-pattern>/table</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>UserPage</servlet-name>
+        <servlet-class>userPage.UserPage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserPage</servlet-name>
+        <url-pattern>/userPage</url-pattern>
+    </servlet-mapping>
 </web-app>

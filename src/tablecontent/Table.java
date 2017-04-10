@@ -64,7 +64,7 @@ public class Table extends HttpServlet {
 
 
         for(int i = 0; i < log.size(); i++){
-            if(currentUserRole().equals("student")){
+            if(currentUserRole(request).equals("student")){
                 if(log.get(i).role.equals("student")){
                     result += "<tr>" +
                             "<td>" + log.get(i).email + "</td>" +
@@ -86,17 +86,10 @@ public class Table extends HttpServlet {
         return result;
 
     }
-    protected String currentUserRole(){
+    protected String currentUserRole(HttpServletRequest request){
         CSVHandling readCsv = new CSVHandling();
-        ArrayList<UserInfo> log = readCsv.CSVReader("C:\\LMS\\src\\currentuser.csv");
+        ArrayList<UserInfo> log = readCsv.CSVReader(request.getServletContext().getRealPath("currentuser.csv"));
         return log.get(0).role;
-
-    }
-
-    protected String currentUserName(){
-        CSVHandling readCsv = new CSVHandling();
-        ArrayList<UserInfo> log = readCsv.CSVReader("C:\\LMS\\src\\currentuser.csv");
-        return log.get(0).name;
 
     }
 }
