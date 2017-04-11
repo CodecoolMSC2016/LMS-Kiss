@@ -25,6 +25,7 @@
 <body>
 <div class="main">
     <h1 class="userpage">User page</h1>
+    <form action="/savebutton" method="post">
     <h4 class="user-name">Username:
         <input class="user-name" type="text" id="changeuser" placeholder=<%=userName%>/><br/>
     </h4>
@@ -35,7 +36,8 @@
         <input class="user-role" type="radio" name="role" value="student"/>Student
         <input class="user-role" type="radio" name="role" value="mentor"/>Mentor
     </h4>
-    <input class="save-button" type="submit" value="Save changes"/>
+        <input class="save-button" name="savebutton" type="submit" value="Save"/>
+    </form>
 </div>
 </body>
 </html>
