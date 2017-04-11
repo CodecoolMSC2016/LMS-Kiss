@@ -1,22 +1,31 @@
 body {
-    background: #9E9D9D;
+    background-image: url("back.jpg");
 }
+
 .main {
-    background-color: #FFF;
-    width: 68%;
+    background-color: #fffaaa;
+    width: 29%;
     border: solid 1px #000;
-    margin: auto;
+    margin-left: 35%;
+    box-shadow: inset 3px 3px 2px #000000, inset -3px -3px 2px #000000;
+    font-family: Arial;
 }
+
 .userpage {
-    text-align: center;
+    text-align: left;
+    margin-left: 33px;
+    margin-bottom: 60px;
 }
+
 .change-user {
-    margin-left: 35px;
+    margin-left: 33px;
 }
+
 .change-role {
-    margin-left: 35px;
+    margin-left: 33px;
 }
+
 .save-button {
-    margin-left: 300px;
-    margin-bottom: 35px;
+    margin-left: 140px;
+    margin-bottom: 25px;
 }
