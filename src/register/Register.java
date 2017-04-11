@@ -1,8 +1,9 @@
 package register;
 
+import SQL.SQLConnector;
+
 import java.io.FileWriter;
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,18 +17,18 @@ public class Register extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     public void registerToFile(HttpServletRequest request) throws IOException{
-        FileWriter writer = new FileWriter(request.getServletContext().getRealPath("logins.csv"), true);
-        writer.append(request.getParameter("email"));
-        writer.append(", ");
-        writer.append(request.getParameter("pw"));
-        writer.append(", ");
-        writer.append(request.getParameter("role"));
-        writer.append(", ");
-        writer.append(request.getParameter("name"));
-        writer.append('\n');
+        String email = "";
+        String pw = "";
+        String role = "";
+        String name = "";
 
-        writer.flush();
-        writer.close();
+        email = request.getParameter("email");
+        pw = request.getParameter("pw");
+        role = request.getParameter("role");
+        name = request.getParameter("name");
+
+        SQLConnector sql = new SQLConnector();
+        sql.sendQuery("INSERT INTO users VALUES ('0', '" + email + "', '" + pw + "', '" + role + "', '" + name + "');");
 
     }
 

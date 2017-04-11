@@ -37,15 +37,17 @@
         <td><img src="logged_images/spacer.gif" width="42" height="1" border="0" alt="" /></td>
         <td><img src="logged_images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
     </tr> <tr> <td colspan="4"><img name="header" src="logged_images/header.png" width="1000" height="207" border="0" id="header" alt="" /></td>
-    <td><img src="logged_images/spacer.gif" width="1" height="207" border="0" alt="" /></td>"
+    <td><img src="logged_images/spacer.gif" width="1" height="207" border="0" alt="" /></td>
 </tr> <tr> <td><img name="cc" src="logged_images/cc.png" width="199" height="98" border="0" id="cc" alt="" /></td>
-    <td rowspan="2" background="logged_images/left_space.png">&nbsp;</td>"
+    <td rowspan="2" background="logged_images/left_space.png">&nbsp;</td>
     <td rowspan="2" valign="top" bgcolor="#FFFFFF">&nbsp; <img src="logged_images/timeline.png" height="25%" width="100%"> </td>
     <td rowspan="2" background="logged_images/right_space.png">&nbsp;</td> <td><img src="logged_images/spacer.gif" width="1" height="98" border="0" alt="" /></td>
 </tr> <tr> <td rowspan="3" valign="top" bgcolor="#737373">&nbsp;
     <form action="/table" method="post" target="_blank">
         <br>
-        <h4><center> <font color="black"> <%=userName%> </font></center></h4>
+        <div>
+            <p>Username: ${username}</p>
+        </div>
         <br>
         <input type="submit" class="button" value="Users List" name ="button1">
     </form>
@@ -60,7 +62,7 @@
     <td><img src="logged_images/spacer.gif" width="1" height="25" border="0" alt="" /></td> </tr> <tr>
     <td colspan="3" background="logged_images/footer.png">&nbsp;
         "<center><strong>2017 © Kis(s) - Codecool's Learning Management System </strong></center>
-        "</td>" +
+        "</td>"
     <td><img src="logged_images/spacer.gif" width="1" height="18" border="0" alt="" /></td> </tr> </table> </body> </html>
 </body>
 </html>

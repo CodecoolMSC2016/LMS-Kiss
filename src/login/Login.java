@@ -1,7 +1,12 @@
 package login;
 
+import SQL.SQLConnector;
+import savebutton.SaveButton;
+
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,58 +17,72 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "Login")
-public class Login extends HttpServlet {
+public class Login extends HttpServlet
+{
     private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
 
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        CSVHandling readCsv = new CSVHandling();
-        ArrayList<UserInfo> log = readCsv.CSVReader(request.getServletContext().getRealPath("logins.csv"));
-        UserInfo user = new UserInfo(request.getParameter("email"), request.getParameter("pw"), "", request
-                .getParameter("name"));
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        String email = "";
+        String pw = "";
 
-        for(int i = 0; i < log.size(); i++){
-            if(log.get(i).email.equals(user.email)){
-                if(log.get(i).password.equals(user.password)){
-                    Cookie loginCookie = new Cookie("user",user.email);
-                    loginCookie.setMaxAge(30*60);
-                    response.addCookie(loginCookie);
-                    response.sendRedirect("MainPagee.jsp");
+        email = request.getParameter("email");
+        pw = request.getParameter("pw");
 
-                    FileWriter writer = new FileWriter(request.getServletContext().getRealPath("currentuser.csv"));
+        ResultSet rs = null;
+        SQLConnector sql = new SQLConnector();
+        rs = sql.getData("SELECT password, name FROM users WHERE email = '" + email + "'");
+        String dbPass = "";
+        String dbName = "";
 
-                    writer.append(request.getParameter("email"));
-                    writer.append(", ");
-                    writer.append(request.getParameter("pw"));
-                    writer.append(", ");
-
-                    writer.append(log.get(i).role);
-                    writer.append(", ");
-                    writer.append(log.get(i).name);
-                    writer.append('\n');
-
-                    writer.flush();
-                    writer.close();
-                    break;
-                }
-                else{
-                    RequestDispatcher wrongpw=request.getRequestDispatcher("wrongpw.html");
-                    wrongpw.include(request,response);
-                    break;
-
-                }
+        try
+        {
+            if (rs.next())
+            {
+                dbPass = rs.getString(1);
+                dbName = rs.getString(2);
             }
-            else{
-                if(i == log.size()-1) {
-                    RequestDispatcher wronguserandpw = request.getRequestDispatcher("wronguserandpw.html");
-                    wronguserandpw.include(request, response);
-                }
-            }
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
         }
 
+
+        if (dbPass != "" && dbPass.equals(pw))
+        {
+            Cookie loginCookie = new Cookie("user", email);
+            loginCookie.setMaxAge(30 * 60);
+            response.addCookie(loginCookie);
+            SaveButton saveButton = new SaveButton();
+            SQLConnector sqll = new SQLConnector();
+            ResultSet rss = null;
+            String emails = saveButton.getCookie(request);
+            rss = sqll.getData("SELECT name FROM users WHERE email = '" + emails + "';");
+
+            try
+            {
+                if (rss.next())
+                {
+                    String shitname = rss.getString(1);
+                    request.setAttribute("username", shitname);
+                    RequestDispatcher disp = request.getRequestDispatcher("/MainPagee.jsp");
+                    disp.forward(request, response);
+                } else
+                {
+                    RequestDispatcher wrongpw = request.getRequestDispatcher("wrongpw.html");
+                    wrongpw.include(request, response);
+                }
+            } catch (SQLException e)
+            {
+                e.printStackTrace();
+            }
+
+            return;
+        }
     }
 }

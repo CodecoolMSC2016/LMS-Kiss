@@ -6,9 +6,14 @@
         <element id="directory" name="classes">
           <element id="module-output" name="LMS" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="mysql-connector-java-5.1.41-bin" />
+          <element id="library" level="project" name="mysql-connector-java-5.1.41-bin1" />
+          <element id="library" level="project" name="mysql-connector-java-5.1.41-bin2" />
+        </element>
       </element>
       <element id="javaee-facet-resources" facet="LMS/web/Web" />
-      <element id="module-output" name="LMS" />
+      <element id="javaee-facet-resources" facet="LMS/web/Web2" />
     </root>
   </artifact>
 </component>

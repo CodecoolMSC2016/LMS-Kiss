@@ -45,4 +45,13 @@
         <servlet-name>UserPage</servlet-name>
         <url-pattern>/userPage</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>SaveButton</servlet-name>
+        <servlet-class>savebutton.SaveButton</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveButton</servlet-name>
+        <url-pattern>/savebutton</url-pattern>
+    </servlet-mapping>
+
 </web-app>
