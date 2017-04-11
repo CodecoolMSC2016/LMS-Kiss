@@ -25,13 +25,15 @@
 <body>
 <div class="main">
     <h1 class="userpage">User page</h1>
-    <h4 class="change-user">Change username:
-        <input class="change-user-name" type="text" id="changeuser" placeholder=<%=userName%>/><br/>
+    <h4 class="user-name">Username:
+        <input class="user-name" type="text" id="changeuser" placeholder=<%=userName%>/><br/>
     </h4>
-    <h4 class="change-role">
-        Change role:
-        <input class="change-role" type="radio" name="role" value="student"/>Student
-        <input class="change-role" type="radio" name="role" value="mentor"/>Mentor
+    <h4 class="user-email">User email:
+        <input class="user-email" readonly type="text" placeholder=<%=userName%>/><br/>
+    </h4>
+    <h4 class="user-role">Role:
+        <input class="user-role" type="radio" name="role" value="student"/>Student
+        <input class="user-role" type="radio" name="role" value="mentor"/>Mentor
     </h4>
     <input class="save-button" type="submit" value="Save changes"/>
 </div>

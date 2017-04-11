@@ -12,16 +12,20 @@ body {
 }
 
 .userpage {
-    text-align: left;
+    text-align: center;
     margin-left: 33px;
     margin-bottom: 60px;
 }
 
-.change-user {
+.user-name {
     margin-left: 33px;
 }
 
-.change-role {
+.user-role {
+    margin-left: 33px;
+}
+
+.user-email {
     margin-left: 33px;
 }
 
