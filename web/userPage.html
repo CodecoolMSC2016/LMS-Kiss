@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="userpage.css">
     <meta charset="UTF-8">
     <title>User Page</title>
-    <script src="../src/userPage/userPage.js"></script>
 </head>
 <body>
-        shit
-
+<div class="main">
+    <h1 class="userpage">User page</h1>
+    <h4 class="user-name">Username:
+        <input class="user-name" type="text" id="changeuser" placeholder="New username"/><br/>
+    </h4>
+    <h4 class="user-email">User email:
+        <input class="user-email" readonly type="text" placeholder=<%=userName%>/><br/>
+    </h4>
+    <h4 class="user-role">Role:
+        <input class="user-role" type="radio" name="role" value="student"/>Student
+        <input class="user-role" type="radio" name="role" value="mentor"/>Mentor
+    </h4>
+    <input class="save-button" type="submit" value="Save changes"/>
+</div>
 </body>
 </html>
