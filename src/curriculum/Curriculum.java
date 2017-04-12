@@ -16,6 +16,8 @@ import java.util.ArrayList;
 
 @WebServlet(name = "Curriculum")
 public class Curriculum extends HttpServlet {
+    ArrayList<String> titlesStudent;
+    ArrayList<String> titlesMentor;
 
     public String getCookie(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
@@ -32,78 +34,37 @@ public class Curriculum extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        ArrayList<String> titlesStudent = new ArrayList<>();
-        ArrayList<String> titlesMentor = new ArrayList<>();
-
         ResultSet rs = null;
         SQLConnector sql = new SQLConnector();
         rs = sql.getData("SELECT role FROM users WHERE email = '" + getCookie(request) + "'");
         String dbRole = "";
-        ResultSet getTitlesStudent = null;
-        ResultSet getTitlesMentor = null;
-        getTitlesStudent = sql.getData("SELECT title FROM curriculum WHERE ispublished = 1");
-        getTitlesMentor = sql.getData("SELECT title FROM curriculum WHERE ispublished = 0");
 
         String getContent = "";
 
 
+        PrintWriter out = response.getWriter();
+
+        String writeout= "";
+
         try {
-            while (getTitlesStudent.next()) {
-                titlesStudent.add(getTitlesStudent.getString("title"));
+            if (rs.next()) {
+                dbRole = rs.getString(1);
+                if (dbRole.equals("student")) {
+
+                    writeout = getStart() + getContentStudent() + getEnd();
+
+                }
+
+                if (dbRole.equals("mentor")) {
+                    writeout= getStart() + getContentStudent() + getContentMentor() + getEnd();
+                }
+
+
             }
+            out.print(writeout);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        try {
-            while (getTitlesMentor.next()) {
-                titlesMentor.add(getTitlesMentor.getString("title"));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-            PrintWriter out = response.getWriter();
-
-            try {
-                if (rs.next()) {
-                    dbRole = rs.getString(1);
-                    if (dbRole.equals("student")) {
-
-                        for (String title : titlesStudent) {
-                            String link = title.toLowerCase();
-                            if (link.contains("/")) {
-                                link = link.replace("/", "");
-                            }
-                            getContent += "<input class=\"button\" type=\"button\" onclick=\"openWin(\'textcontent/" + link + ".txt\')\" value=\"" + title + "\" name=\"java\"/><br/>";
-                        }
-                    }
-
-                    if (dbRole.equals("mentor")) {
-                        for (String title : titlesStudent) {
-                            String link3 = title.toLowerCase();
-                            if (link3.contains("/")) {
-                                link3 = link3.replace("/", "");
-                            }
-                            getContent += "<input class=\"button\" type=\"button\" onclick=\"openWin(\'textcontent/" + link3 + ".txt\')\" value=\"" + title + "\" name=\"java\"/><br/>";
-
-                        }
-                        for (String title : titlesMentor) {
-                            String link2 = title.toLowerCase();
-                                  if (link2.contains("/")) {
-                                        link2 = link2.replace("/", "");
-
-                                    }getContent += "<input class=\"button\" type=\"button\" onclick=\"openWin(\'textcontent/" + link2 + ".txt\')\" value=\"" + title + "\" name=\"java\"/><br/>"
-
-                                    + "<input class=\"publish-button\" type=\"submit\" value=\"Publish\"/><br/><br/>";
-                            }
-                        }
-                    }
-
-
-                out.println(getStart() + getContent + getEnd());
-            } catch(SQLException e) {
-                e.printStackTrace();
-            }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -127,14 +88,21 @@ public class Curriculum extends HttpServlet {
 
                 "<script>" +
                 "var myW;" +
-        "function openAssignment(url) {" +
+                "function openAssignment(url) {" +
                 "myW = window.open(url, \"Assignment\", \"width=1500, height=1000\");" +
-        "document.getElementById(\"submit\").disabled = true;}"
-        +"</script>" +
+                "document.getElementById(\"submit\").disabled = true;}"
+                +"</script>" +
+
+                "<script>" +
+                "var myW;" +
+                "function submitCurr() {" +
+                "document.getElementById(\"publish\").style.display = \"none\";}"
+                +"</script>" +
+
+
                 "<body>" +
                 "<div class=\"main\">" +
-                "<h1>" + "Curriculum" + "</h1>" +
-                "<h3>" + "Text page" + "</h3>";
+                "<h1>" + " Your Curriculum page" + "</h1>";
 
         return page;
     }
@@ -148,5 +116,90 @@ public class Curriculum extends HttpServlet {
                 "</html>";
 
         return page;
+    }
+    
+    protected String getContentStudent() throws SQLException {
+
+        titlesStudent = new ArrayList<>();
+        SQLConnector sql = new SQLConnector();
+
+        ResultSet getTitlesStudent = null;
+        getTitlesStudent = sql.getData("SELECT title FROM curriculum WHERE ispublished = 1");
+
+        try {
+            while (getTitlesStudent.next()) {
+                titlesStudent.add(getTitlesStudent.getString("title"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        
+        String getContent = "";
+        
+        for (String title : titlesStudent) {
+            ResultSet getContentType = sql.getData("SELECT contenttype FROM curriculum WHERE title = '" + title + "'" );
+            String resultContentType = null;
+            while(getContentType.next()){
+                resultContentType = getContentType.getString(1);
+            }
+            String link = title.toLowerCase();
+            if (link.contains("/")) {
+                link = link.replace("/", "");
+            }
+            if (link.contains(" ")) {
+                link = link.replace(" ", "");
+            }
+            System.out.println(resultContentType);
+            if(resultContentType.equals("text")) {
+                getContent += "<input class=\"button\" type=\"button\" onclick=\"openWin(\'textcontent/" + link + ".txt\')\" value=\"" + title + "\" name=\"java\"/><br/>";
+            } else {
+                getContent += "<input class=\"button\" type=\"submit\" onClick=\"openAssignment(\'assignment.jsp\');\" value=\"" + title + "\" id=\"submit\"/><br/>" +
+                        "<a href=\"javascript:openWin(\'assigment.html\')\";></a>";
+            }
+        }
+        return getContent;
+    }
+    protected String getContentMentor() throws SQLException{
+        titlesMentor = new ArrayList<>();
+        SQLConnector sql = new SQLConnector();
+
+        ResultSet getTitlesMentor = null;
+        getTitlesMentor = sql.getData("SELECT title FROM curriculum WHERE ispublished = 0");
+
+        try {
+            while (getTitlesMentor.next()) {
+                titlesMentor.add(getTitlesMentor.getString("title"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        String getContent = "";
+        for (String title : titlesMentor) {
+            ResultSet getContentType = sql.getData("SELECT contenttype FROM curriculum WHERE title = '" + title + "'" );
+            String resultContentType = null;
+
+            while(getContentType.next()){
+                resultContentType = getContentType.getString(1);
+            }
+            String link = title.toLowerCase();
+            if (link.contains("/")) {
+                link = link.replace("/", "");
+            }
+            if (link.contains(" ")) {
+                link = link.replace(" ", "");
+            }
+            System.out.println(resultContentType);
+            if(resultContentType.equals("text")) {
+                getContent += "<input class=\"button\" type=\"button\" onclick=\"openWin(\'textcontent/" + link + ".txt\')\" value=\"" + title + "\" name=\"java\"/>"
+                + "<form action=\"publishButton\"><input class=\"publish-button\" type=\"submit\" onClick=\"submitCurr();\" value=\"Publish\" id=\"publish\"/></form><br/><br/>";
+            } else {
+                getContent += "<input class=\"button\" type=\"submit\" onClick=\"openAssignment(\'assignment.jsp\');\" value=\"" + title + "\" id=\"submit\"/>" +
+                        "<a href=\"javascript:openWin(\'assigment.html\')\";></a>" + "<input class=\"publish-button\" type=\"submit\" value=\"Publish\" id=\"publish\"/><br/><br/>"
+                ;
+            }
+        }
+        return getContent;
     }
 }

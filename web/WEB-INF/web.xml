@@ -71,4 +71,13 @@
         <url-pattern>/assignment</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>PublishButton</servlet-name>
+        <servlet-class>publishbutton.PublishButton</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PublishButton</servlet-name>
+        <url-pattern>/publishButton</url-pattern>
+    </servlet-mapping>
+
 </web-app>
