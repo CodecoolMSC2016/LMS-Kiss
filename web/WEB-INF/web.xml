@@ -54,4 +54,21 @@
         <url-pattern>/savebutton</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Curriculum</servlet-name>
+        <servlet-class>curriculum.Curriculum</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Curriculum</servlet-name>
+        <url-pattern>/curriculum</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AssignmentServlet</servlet-name>
+        <servlet-class>assignment.AssignmentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AssignmentServlet</servlet-name>
+        <url-pattern>/assignment</url-pattern>
+    </servlet-mapping>
+
 </web-app>

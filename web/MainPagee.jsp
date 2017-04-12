@@ -54,7 +54,7 @@
     <form action="/userPage" method="post">
         <input type="submit" class="button" value="User Page" name="button2">
     </form>
-    <form action="/" method="post">
+    <form action="/curriculum" method="post">
         <input type="submit" class="button" value="Curriculum View" name="button3">
     </form>
 </td> <td><img src="logged_images/spacer.gif" width="1" height="412" border="0" alt="" /></td>

@@ -1,0 +1,22 @@
+body {
+    background-image: url("back.jpg");
+}
+
+.main {
+    background-color: #FFF;
+    width: 68%;
+    border: solid 1px #000;
+    margin: auto;
+}
+
+h4 {
+    margin-left: 35px;
+}
+
+input {
+    margin-left: 35px;
+}
+
+.submit-button {
+    margin-bottom: 35px;
+}
