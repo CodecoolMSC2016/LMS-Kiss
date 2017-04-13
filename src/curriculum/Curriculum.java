@@ -108,10 +108,7 @@ public class Curriculum extends HttpServlet {
     }
     protected String getEnd(){
         String page = "";
-        page += "<h3>" + "Assignments" + "</h3>" +
-                "<input class=\"button\" type=\"submit\" onClick=\"openAssignment(\'assignment.jsp\');\" value=\"Java Assignment\" id=\"submit\"/><br/>" +
-                "<a href=\"javascript:openWin(\'assigment.html\')\";></a>" +
-                "</div>" +
+        page += "</div>" +
                 "</body>" +
                 "</html>";
 
@@ -150,7 +147,6 @@ public class Curriculum extends HttpServlet {
             if (link.contains(" ")) {
                 link = link.replace(" ", "");
             }
-            System.out.println(resultContentType);
             if(resultContentType.equals("text")) {
                 getContent += "<input class=\"button\" type=\"button\" onclick=\"openWin(\'textcontent/" + link + ".txt\')\" value=\"" + title + "\" name=\"java\"/><br/>";
             } else {
@@ -190,7 +186,6 @@ public class Curriculum extends HttpServlet {
             if (link.contains(" ")) {
                 link = link.replace(" ", "");
             }
-            System.out.println(resultContentType);
             if(resultContentType.equals("text")) {
                 getContent += "<input class=\"button\" type=\"button\" onclick=\"openWin(\'textcontent/" + link + ".txt\')\" value=\"" + title + "\" name=\"java\"/>"
                 + "<form action=\"publishButton\"><input class=\"publish-button\" type=\"submit\" onClick=\"submitCurr();\" value=\"Publish\" id=\"publish\"/></form><br/><br/>";
