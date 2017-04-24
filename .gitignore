@@ -4,7 +4,13 @@
 *.iml
 out/
 lib/
+<<<<<<< Updated upstream
 *.idea/
+=======
+.idea/
+
+
+>>>>>>> Stashed changes
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -15,3 +21,6 @@ lib/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/.idea/
+/.idea/kotlinc.xml
+/.gitignore
