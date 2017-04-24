@@ -32,6 +32,9 @@
         </h4>
         <input class="save-button" name="savebutton" type="submit" value="Save"/>
     </form>
+    <form action="/deletebutton" method="post">
+        <input class="delete-button" name="deletebutton" type="submit" value="Delete account"/>
+    </form>
 </div>
 </body>
 </html>

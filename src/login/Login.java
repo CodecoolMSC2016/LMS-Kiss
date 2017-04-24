@@ -30,7 +30,7 @@ public class Login extends HttpServlet
     {
         String email = "";
         String pw = "";
-
+        String name = request.getParameter("name");
         email = request.getParameter("email");
         pw = request.getParameter("pw");
 
@@ -58,6 +58,9 @@ public class Login extends HttpServlet
             Cookie loginCookie = new Cookie("user", email);
             loginCookie.setMaxAge(30 * 60);
             response.addCookie(loginCookie);
+            Cookie loginsCookie = new Cookie("username", name);
+            loginCookie.setMaxAge(30 * 60);
+            response.addCookie(loginCookie);
             SaveButton saveButton = new SaveButton();
             SQLConnector sqll = new SQLConnector();
             ResultSet rss = null;
@@ -72,17 +75,20 @@ public class Login extends HttpServlet
                     request.setAttribute("username", shitname);
                     RequestDispatcher disp = request.getRequestDispatcher("/MainPagee.jsp");
                     disp.forward(request, response);
-                } else
-                {
-                    RequestDispatcher wrongpw = request.getRequestDispatcher("wrongpw.html");
-                    wrongpw.include(request, response);
                 }
+
             } catch (SQLException e)
             {
                 e.printStackTrace();
             }
 
+
             return;
+        }
+        else
+        {
+            RequestDispatcher wrongpw = request.getRequestDispatcher("wrongpw.html");
+            wrongpw.include(request, response);
         }
     }
 }

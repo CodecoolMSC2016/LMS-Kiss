@@ -79,5 +79,13 @@
         <servlet-name>PublishButton</servlet-name>
         <url-pattern>/publishButton</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteButton</servlet-name>
+        <servlet-class>deletebutton.DeleteButton</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteButton</servlet-name>
+        <url-pattern>/deletebutton</url-pattern>
+    </servlet-mapping>
 
 </web-app>
