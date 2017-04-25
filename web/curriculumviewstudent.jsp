@@ -39,13 +39,13 @@
         <div class="main">
             <h1>Curriculum</h1>
             <h3>Text page</h3>
-            <input class="button" type="button" onclick="openWin('java.txt')" value="Java" name="java"/><br/>
-            <input class="button" type="button" onclick="openWin('htmlcss.txt')" value="HTML/CSS" name="htmlcss"/><br/>
-            <input class="button" type="button" onclick="openWin('sql.txt')" value="SQL" name="sql"/>
+            <input class="button" type="button" onclick="openWin('textcontent/java.txt')" value="Java" name="java"/><br/>
+            <input class="button" type="button" onclick="openWin('textcontent/htmlcss.txt')" value="HTML/CSS" name="htmlcss"/><br/>
+            <input class="button" type="button" onclick="openWin('textcontent/sql.txt')" value="SQL" name="sql"/>
             <input class="publish-button" type="submit" value="Publish"/><br/><br/>
             <h3>Assignments</h3>
-            <input class="button" type="submit" onclick="openWin('assigment.html')" value="Java Assignment"/><br/>
-            <a href="javascript:openWin('assigment.html')";></a>
+            <input class="button" type="submit" onclick="openWin('assignment.jsp')" value="Java Assignment"/><br/>
+            <a href="javascript:openWin('assignment.jsp')";></a>
         </div>
         <script>
             var myWindow;
