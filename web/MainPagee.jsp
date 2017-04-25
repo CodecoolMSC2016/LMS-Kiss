@@ -1,23 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lugos
-  Date: 2017. 04. 10.
-  Time: 12:03
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
-    <link href="loggedin.css" rel="stylesheet" type="text/css" >
-    <style type="text/css" >
-        body {
-            background-color: #DADADA;
-        }
-    </style>
-</head>
-<body>
 <%
     String userName = null;
     Cookie[] cookies = request.getCookies();
@@ -28,41 +8,63 @@
     }
     if(userName == null) response.sendRedirect("login.html");
 %>
-<table width="1000" border="0" align="left" cellpadding="0" cellspacing="0">
-    <tr>
-        <td><img src="logged_images/spacer.gif" width="199" height="1" border="0" alt="" /></td>
-        <td><img src="logged_images/spacer.gif" width="26" height="1" border="0" alt="" /></td>
-        <td><img src="logged_images/spacer.gif" width="733" height="1" border="0" alt="" /></td>
+<!DOCTYPE html>
+<html>
+<title>Main page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+    .w3-row-padding img {margin-bottom: 12px}
+    /* Set the width of the sidebar to 120px */
+    .w3-sidebar {width: 120px;background: #222;}
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {margin-left: 120px}
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+<body class="w3-black">
 
-        <td><img src="logged_images/spacer.gif" width="42" height="1" border="0" alt="" /></td>
-        <td><img src="logged_images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
-    </tr> <tr> <td colspan="4"><img name="header" src="logged_images/header.png" width="1000" height="207" border="0" id="header" alt="" /></td>
-    <td><img src="logged_images/spacer.gif" width="1" height="207" border="0" alt="" /></td>
-</tr> <tr> <td><img name="cc" src="logged_images/cc.png" width="199" height="98" border="0" id="cc" alt="" /></td>
-    <td rowspan="2" background="logged_images/left_space.png">&nbsp;</td>
-    <td rowspan="2" valign="top" bgcolor="#FFFFFF">&nbsp; <img src="logged_images/timeline.png" height="25%" width="100%"> </td>
-    <td rowspan="2" background="logged_images/right_space.png">&nbsp;</td> <td><img src="logged_images/spacer.gif" width="1" height="98" border="0" alt="" /></td>
-</tr> <tr> <td rowspan="3" valign="top" bgcolor="#737373">&nbsp;
-    <form action="/table" method="post" target="_blank">
-        <br>
-        <div>
-            <p>Username: ${username}</p>
-        </div>
-        <br>
-        <input type="submit" class="button" value="Users List" name ="button1">
-    </form>
-    <form action="/userPage" method="post">
-        <input type="submit" class="button" value="User Page" name="button2">
-    </form>
-    <form action="/curriculum" method="post">
-        <input type="submit" class="button" value="Curriculum View" name="button3">
-    </form>
-</td> <td><img src="logged_images/spacer.gif" width="1" height="412" border="0" alt="" /></td>
-</tr> <tr> <td colspan="3"><img name="line" src="logged_images/line.png" width="801" height="25" border="0" id="line" alt="" /></td>
-    <td><img src="logged_images/spacer.gif" width="1" height="25" border="0" alt="" /></td> </tr> <tr>
-    <td colspan="3" background="logged_images/footer.png">&nbsp;
-        "<center><strong>2017 © Kis(s) - Codecool's Learning Management System </strong></center>
-        "</td>"
-    <td><img src="logged_images/spacer.gif" width="1" height="18" border="0" alt="" /></td> </tr> </table> </body> </html>
-</body>
-</html>
+
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+        <i class="fa fa-home w3-xxlarge"></i>
+        <p>${username}</p>
+    </a>
+    <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black" name="button1">
+        <i class="fa fa-user w3-xxlarge"></i>
+        <p>USER LIST</p>
+    </a>
+    <a href="userPagee.jsp" class="w3-bar-item w3-button w3-padding-large w3-hover-black" name="button2">
+        <i class="fa fa-eye w3-xxlarge"></i>
+        <p>USER PAGE</p>
+    </a>
+    <a href="curriculumviewstudent.jsp" class="w3-bar-item w3-button w3-padding-large w3-hover-black" name="button3">
+        <i class="fa fa-envelope w3-xxlarge"></i>
+        <p>CURR. VIEW</p>
+    </a>
+</nav>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+    <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+        <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+        <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
+        <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PHOTOS</a>
+        <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+    </div>
+</div>
+
+<div class="w3-padding-large" id="main">
+    <header class="w3-container w3-padding-32 w3-center" id="home">
+        <style>
+            body {
+                background-image: url("wall.jpg");
+            }
+        </style>
+        <h1 class="w3-jumbo">Learning Management System</h1>
+        <img src="codecool.png" alt="boy" class="w3-image" width="992" height="1108" >
+    </header>
