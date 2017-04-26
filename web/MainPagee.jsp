@@ -71,3 +71,4 @@
         <h1 class="w3-jumbo">Learning Management System</h1>
         <img src="codecool.png" alt="boy" class="w3-image" width="992" height="1108" >
     </header>
+</div>
