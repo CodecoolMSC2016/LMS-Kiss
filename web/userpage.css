@@ -1,5 +1,5 @@
 body {
-    background-image: url("wall.jpg");
+    background-image: url("wall.jpg") !important;
 }
 
 .main {
@@ -32,15 +32,19 @@ body {
 }
 
 .change-role {
-    text-align: center;
+    margin-left: 448px;
 }
 
 .change-email {
-    margin-left: 125px;
+    margin-left: 126px;
 }
 
 .change-user-name {
     margin-left: 10px;
+}
+
+.change-role-student {
+    margin-left: 70px;
 }
 
 .save-button {

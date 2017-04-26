@@ -8,7 +8,7 @@
         }
         if(userName == null) response.sendRedirect("login.html");
 %>
-    <link rel="stylesheet" type="text/css" href="userpage.css">
+
     <meta charset="UTF-8">
     <title>User Page</title>
 <!DOCTYPE html>
@@ -16,6 +16,7 @@
 <title>User page</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="userpage.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -52,15 +53,15 @@
     <h1 class="userpage">User page</h1>
     <form action="/savebutton" method="post">
         <h4 class="change-user">Change username:
-        <input class="change-user-name" type="text" id="changeuser" name="changeuser" placeholder=<%=userName%>   ><br/>
+        <input class="change-user-name" type="text" id="changeuser" name="changeuser" placeholder="New username"   ><br/>
     </h4>
         <h4 class="change-user">E-mail:
-            <input class="change-email" readonly type="text" placeholder=<%=userName%>   ><br/>
+            <input class="change-email" readonly type="text" placeholder="New e-mail address"   ><br/>
         </h4>
         <h4 class="change-role">
             Change role:
-            <input class="change-role" type="radio" name="role" value="student"/>Student
-            <input class="change-role" type="radio" name="role" value="mentor"/>Mentor
+            <input class="change-role-student" type="radio" name="role" value="student"/>Student
+            <input class="change-role-mentor" type="radio" name="role" value="mentor"/>Mentor
         </h4>
         <input class="save-button" name="savebutton" type="submit" value="Save"/>
     </form>
