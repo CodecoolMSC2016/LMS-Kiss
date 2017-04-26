@@ -28,7 +28,8 @@ public class Register extends HttpServlet {
         name = request.getParameter("name");
 
         SQLConnector sql = new SQLConnector();
-        sql.sendQuery("INSERT INTO users VALUES ('0', '" + email + "', '" + pw + "', '" + role + "', '" + name + "');");
+        sql.sendQuery("INSERT INTO users VALUES ('0', '" + email + "',sha1('" + pw + "'), '" + role + "', '" + name +
+                "');");
 
     }
 
@@ -39,7 +40,7 @@ public class Register extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         registerToFile(request);
-        RequestDispatcher success=request.getRequestDispatcher("registered.html");
+        RequestDispatcher success=request.getRequestDispatcher("login.jsp");
         success.include(request,response);
     }
 

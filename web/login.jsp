@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html >
 <head>
@@ -75,32 +76,61 @@
 
         }
 
-        .login input[type=text]{
-            width: 250px;
-            height: 30px;
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.6);
-            border-radius: 2px;
-            color: #fff;
-            font-family: 'Exo', sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            padding: 4px;
+        .login input[type=email]{
+            width: 300px;
+            -moz-box-shadow:inset 0px 0px 15px 3px #91b8b3;
+            -webkit-box-shadow:inset 0px 0px 15px 3px #91b8b3;
+            box-shadow:inset 0px 0px 15px 3px #91b8b3;
+            background-color:transparent;
+            -moz-border-radius:17px;
+            -webkit-border-radius:17px;
+            border-radius:17px;
+            border:1px solid #566963;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-size:15px;
+            padding:6px 13px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #2b665e;
         }
 
         .login input[type=password]{
-            width: 250px;
-            height: 30px;
-            background: transparent;
-            border: 1px solid rgba(255,255,255,0.6);
-            border-radius: 2px;
-            color: #fff;
-            font-family: 'Exo', sans-serif;
-            font-size: 16px;
-            font-weight: 400;
-            padding: 4px;
-            margin-top: 10px;
+            width: 300px;
+            -moz-box-shadow:inset 0px 0px 15px 3px #91b8b3;
+            -webkit-box-shadow:inset 0px 0px 15px 3px #91b8b3;
+            box-shadow:inset 0px 0px 15px 3px #91b8b3;
+            background-color:transparent;
+            -moz-border-radius:17px;
+            -webkit-border-radius:17px;
+            border-radius:17px;
+            border:1px solid #566963;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-size:15px;
+            padding:6px 13px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #2b665e;
         }
+        .login input[type=submit]{
+            align-items: center;
+            width: 328px;
+            -moz-box-shadow:inset 0px 0px 15px 3px #91b8b3;
+            -webkit-box-shadow:inset 0px 0px 15px 3px #91b8b3;
+            box-shadow:inset 0px 0px 15px 3px #91b8b3;
+            background-color:transparent;
+            -moz-border-radius:17px;
+            -webkit-border-radius:17px;
+            border-radius:17px;
+            border:1px solid #566963;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-size:15px;
+            padding:6px 13px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #2b665e;
 
         .login input[type=button]{
             width: 260px;
@@ -117,15 +147,27 @@
             margin-top: 10px;
         }
 
-        .login input[type=button]:hover{
+        .login input[type=submit]:hover{
             opacity: 0.8;
+            border: dotted;
+            border-color: chartreuse;
+        }
+        .login input[type=email]:hover{
+            opacity: 0.8;
+            border: dotted;
+            border-color: chartreuse;
+        }
+        .login input[type=password]:hover{
+            opacity: 0.8;
+            border: dotted;
+            border-color: chartreuse;
         }
 
         .login input[type=button]:active{
             opacity: 0.6;
         }
 
-        .login input[type=text]:focus{
+        .login input[type=email]:focus{
             outline: none;
             border: 1px solid rgba(255,255,255,0.9);
         }
@@ -142,39 +184,10 @@
         ::-webkit-input-placeholder{
             color: rgba(255,255,255,0.6);
         }
+        h5 {
+            position: relative;
 
-        ::-moz-input-placeholder{
-            color: rgba(255,255,255,0.6);
         }
-        .myButton {
-            width: 300px;
-            -moz-box-shadow:inset 0px 0px 15px 3px #91b8b3;
-            -webkit-box-shadow:inset 0px 0px 15px 3px #91b8b3;
-            box-shadow:inset 0px 0px 15px 3px #91b8b3;
-            background-color:transparent;
-            -moz-border-radius:17px;
-            -webkit-border-radius:17px;
-            border-radius:17px;
-            border:1px solid #566963;
-            display:inline-block;
-            cursor:pointer;
-            color:#ffffff;
-            font-family:Arial;
-            font-size:15px;
-            padding:6px 13px;
-            text-decoration:none;
-            text-shadow:0px 1px 0px #2b665e;
-            text-align: center;
-        }
-        .myButton:hover {
-            background-color:transparent;
-        }
-        .myButton:active {
-            position:relative;
-            top:1px;
-        }
-
-
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
@@ -189,9 +202,12 @@
 </div>
 <br>
 <div class="login">
-    <p><a href="login.jsp" class="myButton">Login</a></p>
-    <p><a href="register.html" class="myButton">Register</a></p>
-
+    <form action="/login" method="post" >
+        <p><input type="email" placeholder="Email" name="email"></p>
+        <p><input type="password" placeholder="Password" name="pw"><p><br>
+        <input type="submit" value="Login">
+        <h5>${message}</h5>
+    </form>
 </div>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 

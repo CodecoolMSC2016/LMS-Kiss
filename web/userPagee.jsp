@@ -6,7 +6,7 @@
                 if(cookie.getName().equals("user")) userName = cookie.getValue();
             }
         }
-        if(userName == null) response.sendRedirect("login.html");
+        if(userName == null) response.sendRedirect("login.jsp");
 %>
 
     <meta charset="UTF-8">

@@ -5,6 +5,9 @@ import savebutton.SaveButton;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,11 +18,23 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.DatatypeConverter;
 
 @WebServlet(name = "Login")
 public class Login extends HttpServlet
 {
     private static final long serialVersionUID = 1L;
+    public String sha1(String input) {
+        String sha1 = null;
+        try {
+            MessageDigest msdDigest = MessageDigest.getInstance("SHA-1");
+            msdDigest.update(input.getBytes("UTF-8"), 0, input.length());
+            sha1 = DatatypeConverter.printHexBinary(msdDigest.digest());
+        } catch (UnsupportedEncodingException | NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return sha1;
+    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
@@ -53,7 +68,7 @@ public class Login extends HttpServlet
         }
 
 
-        if (dbPass != "" && dbPass.equals(pw))
+        if (dbPass != "" && dbPass.equalsIgnoreCase(sha1(pw)))
         {
             Cookie loginCookie = new Cookie("user", email);
             loginCookie.setMaxAge(30 * 60);
@@ -87,7 +102,8 @@ public class Login extends HttpServlet
         }
         else
         {
-            RequestDispatcher wrongpw = request.getRequestDispatcher("wrongpw.html");
+            request.setAttribute("message", "Wrong Email or Password!");
+            RequestDispatcher wrongpw = request.getRequestDispatcher("login.jsp");
             wrongpw.include(request, response);
         }
     }

@@ -74,7 +74,7 @@
             z-index: 2;
         }
 
-        .login input[type=text]{
+        .login input[type=email]{
             width: 300px;
             -moz-box-shadow:inset 0px 0px 15px 3px #91b8b3;
             -webkit-box-shadow:inset 0px 0px 15px 3px #91b8b3;
@@ -154,7 +154,7 @@
             opacity: 0.6;
         }
 
-        .login input[type=text]:focus{
+        .login input[type=email]:focus{
             outline: none;
             border: 1px solid rgba(255,255,255,0.9);
         }
@@ -189,12 +189,12 @@
 </div>
 <br>
 <div class="login">
-    <form action="/login" method="post" >
-        <p><input type="text" placeholder="Email" name="email"></p>
+    <form action="/register" method="post" >
+        <p><input type="email" placeholder="Email" name="email"></p>
         <p><input type="password" placeholder="Password" name="pw"></p>
         <tr>
             <td height="26"><strong>Role:</strong></td>
-            <td width="124"><input name="role" type="radio" value="student"> Student</td>
+            <td width="124"><input name="role" type="radio" value="student" checked="checked"> Student</td>
             <td width="115">
                 <input name="role" type="radio" value="mentor"> Mentor</td>
         </tr>
