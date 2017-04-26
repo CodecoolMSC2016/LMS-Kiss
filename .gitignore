@@ -2,7 +2,6 @@
 *.classpath
 *.project
 out/
-lib/
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 .idea/workspace.xml
