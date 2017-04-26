@@ -66,7 +66,9 @@
         <input class="save-button" name="savebutton" type="submit" value="Save"/>
     </form>
     <form action="/deletebutton" method="post">
+        <input class="delete-password" type="password" id="delete" name="delete" placeholder="To delete your account give your password">
         <input class="delete-button" name="deletebutton" type="submit" value="Delete account"/>
+        ${error}
     </form>
 </div>
 </body>
