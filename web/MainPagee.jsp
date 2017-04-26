@@ -32,7 +32,7 @@
 <nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
     <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
         <i class="fa fa-home w3-xxlarge"></i>
-        <p>${username}</p>
+        <p>HOME</p>
     </a>
     <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black" name="button1">
         <i class="fa fa-user w3-xxlarge"></i>
