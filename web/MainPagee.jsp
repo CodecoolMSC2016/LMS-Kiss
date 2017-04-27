@@ -46,6 +46,9 @@
         <i class="fa fa-envelope w3-xxlarge"></i>
         <p>CURR. VIEW</p>
     </a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black" name="button4">
+        <p>LOG OUT</p>
+    </a>
 </nav>
 
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
