@@ -15,14 +15,32 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
-    body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-    .w3-row-padding img {margin-bottom: 12px}
+    body, h1, h2, h3, h4, h5, h6 {
+        font-family: "Montserrat", sans-serif;
+        background-image: url("wall.jpg") !important;
+    }
+
+    .w3-row-padding img {
+        margin-bottom: 12px
+    }
+
     /* Set the width of the sidebar to 120px */
-    .w3-sidebar {width: 120px;background: #222;}
+    .w3-sidebar {
+        width: 120px;
+        background: #222;
+    }
+
     /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-    #main {margin-left: 120px}
+    #main {
+        margin-left: 120px
+    }
+
     /* Remove margins from "page content" on small screens */
-    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+    @media only screen and (max-width: 600px) {
+        #main {
+            margin-left: 0
+        }
+    }
 </style>
 
 <body class="w3-black" style="margin-top: -10px">
@@ -43,22 +61,17 @@
         <i class="fa fa-envelope w3-xxlarge"></i>
         <p>CURR. VIEW</p>
     </a>
-    <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black" name="button4">
-        <p>LOG OUT</p>
-    </a>
 </nav>
 
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="SQL.SQLConnector" %>
 
 <%
     String driverName = "com.mysql.jdbc.Driver";
     String connectionUrl = "jdbc:mysql://127.0.0.1:3306/";
     String dbName = "lms";
     String userId = "root";
-    String password = "admin";
+    String password = "AspR4501";
 
     String userEmail = null;
     Cookie[] cookies = request.getCookies();
@@ -77,10 +90,11 @@
     Connection connection = null;
     Statement statement = null;
     ResultSet resultSet = null;
+    ResultSet roleResult = null;
 %>
 
-<h2 align="center"><font><strong>User List:</strong></font></h2>
-<table width="40%" align="center" cellpadding="8" cellspacing="6" border="1">
+<h2 align="center"><font color="black"><strong>User List:</strong></font></h2>
+<table width="40%" align="center" cellpadding="7" cellspacing="6" border="1">
     <tr>
     </tr>
     <tr bgcolor="#A52A2A">
@@ -94,10 +108,19 @@
             statement = connection.createStatement();
 
             String roleQuery = "SELECT role FROM users WHERE email = '" + userEmail + "'";
+            roleResult = statement.executeQuery(roleQuery);
 
-            //String sql ="SELECT email, role, name FROM users WHERE role = '" + roleQuery + "'";
-            String sql ="SELECT email, role, name FROM users";
-            //System.out.println(sql);
+            roleResult.next();
+            String roleUser = roleResult.getString(1);
+            String sql = "";
+
+            if (roleUser.equals("student")) {
+                sql ="SELECT email, role, name FROM users WHERE role = '" + roleUser + "'";
+            }
+            else {
+                sql ="SELECT email, role, name FROM users";
+            }
+
             resultSet = statement.executeQuery(sql);
             while(resultSet.next()){
     %>
