@@ -42,7 +42,7 @@
         <i class="fa fa-address-card-o w3-xxlarge"></i>
         <p>USER PAGE</p>
     </a>
-    <a href="curriculumviewstudent.jsp" class="w3-bar-item w3-button w3-padding-large w3-hover-black" name="button3">
+    <a href="curriculum.jsp" class="w3-bar-item w3-button w3-padding-large w3-hover-black" name="button3">
         <i class="fa fa-file-text-o w3-xxlarge"></i>
         <p>CURR. VIEW</p>
     </a>
