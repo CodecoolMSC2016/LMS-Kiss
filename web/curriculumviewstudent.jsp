@@ -23,7 +23,7 @@
         <i class="fa fa-home w3-xxlarge"></i>
         <p>HOME</p>
     </a>
-    <a href="/userList" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <a href="userList.jsp" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
         <i class="fa fa-user w3-xxlarge"></i>
         <p>USER LIST</p>
     </a>
