@@ -7,7 +7,6 @@
 --%>
 <!DOCTYPE html>
 <html>
-<meta contentType="text/html;charset=UTF-8" language="java">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>User List</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -24,23 +23,11 @@
         margin-bottom: 12px
     }
 
-    /* Set the width of the sidebar to 120px */
     .w3-sidebar {
         width: 120px;
         background: #222;
     }
 
-    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-    #main {
-        margin-left: 120px
-    }
-
-    /* Remove margins from "page content" on small screens */
-    @media only screen and (max-width: 600px) {
-        #main {
-            margin-left: 0
-        }
-    }
 </style>
 
 <body class="w3-black" style="margin-top: -10px">
@@ -64,7 +51,6 @@
 </nav>
 
 <%@ page import="java.sql.*" %>
-<%@ page import="SQL.SQLConnector" %>
 
 <%
     String driverName = "com.mysql.jdbc.Driver";
@@ -87,10 +73,6 @@
         e.printStackTrace();
     }
 
-    Connection connection = null;
-    Statement statement = null;
-    ResultSet resultSet = null;
-    ResultSet roleResult = null;
 %>
 
 <h2 align="center"><font color="black"><strong>User List:</strong></font></h2>
@@ -104,11 +86,11 @@
     </tr>
     <%
         try{
-            connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
-            statement = connection.createStatement();
+            Connection connection = DriverManager.getConnection(connectionUrl+dbName, userId, password);
+            Statement statement = connection.createStatement();
 
             String roleQuery = "SELECT role FROM users WHERE email = '" + userEmail + "'";
-            roleResult = statement.executeQuery(roleQuery);
+            ResultSet roleResult = statement.executeQuery(roleQuery);
 
             roleResult.next();
             String roleUser = roleResult.getString(1);
@@ -121,7 +103,7 @@
                 sql ="SELECT email, role, name FROM users";
             }
 
-            resultSet = statement.executeQuery(sql);
+            ResultSet resultSet = statement.executeQuery(sql);
             while(resultSet.next()){
     %>
     <tr bgcolor="#160c00">
