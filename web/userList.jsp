@@ -41,12 +41,16 @@
         <p>USER LIST</p>
     </a>
     <a href="userPagee.jsp" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-eye w3-xxlarge"></i>
+        <i class="fa fa-address-card-o w3-xxlarge"></i>
         <p>USER PAGE</p>
     </a>
     <a href="curriculumviewstudent.jsp" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-        <i class="fa fa-envelope w3-xxlarge"></i>
+        <i class="fa fa-file-text-o w3-xxlarge"></i>
         <p>CURR. VIEW</p>
+    </a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-hover-black" name="button4">
+        <i class="fa fa-power-off w3-xxlarge"></i>
+        <p>LOG OUT</p>
     </a>
 </nav>
 
@@ -57,7 +61,7 @@
     String connectionUrl = "jdbc:mysql://127.0.0.1:3306/";
     String dbName = "lms";
     String userId = "root";
-    String password = "AspR4501";
+    String password = "admin";
 
     String userEmail = null;
     Cookie[] cookies = request.getCookies();
