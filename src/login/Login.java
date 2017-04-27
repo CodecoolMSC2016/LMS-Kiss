@@ -68,8 +68,8 @@ public class Login extends HttpServlet
             {
                 if (rss.next())
                 {
-                    String shitname = rss.getString(1);
-                    request.setAttribute("username", shitname);
+                    String loginName = rss.getString(1);
+                    request.setAttribute("username", loginName);
                     RequestDispatcher disp = request.getRequestDispatcher("/MainPagee.jsp");
                     disp.forward(request, response);
                 }
