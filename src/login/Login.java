@@ -43,32 +43,14 @@ public class Login extends HttpServlet
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String email = "";
-        String pw = "";
+        String email = request.getParameter("email");
+        String pw = request.getParameter("pw");
         String name = request.getParameter("name");
-        email = request.getParameter("email");
-        pw = request.getParameter("pw");
 
-        ResultSet rs = null;
-        SQLConnector sql = new SQLConnector();
-        rs = sql.getData("SELECT password, name FROM users WHERE email = '" + email + "'");
-        String dbPass = "";
-        String dbName = "";
+        LoginService ls = new LoginService();
+        String[] datasFromDatabase = ls.sqlQuery(email);
 
-        try
-        {
-            if (rs.next())
-            {
-                dbPass = rs.getString(1);
-                dbName = rs.getString(2);
-            }
-        } catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-
-
-        if (dbPass != "" && dbPass.equalsIgnoreCase(sha1(pw)))
+        if (datasFromDatabase[DataType.PASSWORD.getValue()] != "" && datasFromDatabase[DataType.PASSWORD.getValue()].equalsIgnoreCase(sha1(pw)))
         {
             Cookie loginCookie = new Cookie("user", email);
             loginCookie.setMaxAge(30 * 60);
