@@ -14,7 +14,7 @@ public class SQLConnector {
 	public SQLConnector(){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lms", "root", "admin");
+			conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/lms", "root", "ashwagandha");
 			System.out.println("New SQL connection!");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

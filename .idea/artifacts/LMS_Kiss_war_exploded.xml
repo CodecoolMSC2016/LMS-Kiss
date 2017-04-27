@@ -7,11 +7,11 @@
           <element id="module-output" name="LMS-Kiss" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="mysql-connector-java-5.1.41-bin" />
+          <element id="library" level="project" name="Java EE 6-Java EE 6" />
+          <element id="library" level="project" name="mysql-connector-java-5.1.41-bin (2)" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="LMS-Kiss/web/Web" />
-      <element id="javaee-facet-resources" facet="LMS-Kiss/web/Web2" />
     </root>
   </artifact>
 </component>
