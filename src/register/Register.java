@@ -17,19 +17,13 @@ public class Register extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     public void registerToFile(HttpServletRequest request) throws IOException{
-        String email = "";
-        String pw = "";
-        String role = "";
-        String name = "";
+        String email = request.getParameter("email");
+        String pw = request.getParameter("pw");
+        String role = request.getParameter("role");
+        String name = request.getParameter("name");
 
-        email = request.getParameter("email");
-        pw = request.getParameter("pw");
-        role = request.getParameter("role");
-        name = request.getParameter("name");
-
-        SQLConnector sql = new SQLConnector();
-        sql.sendQuery("INSERT INTO users VALUES ('0', '" + email + "',sha1('" + pw + "'), '" + role + "', '" + name +
-                "');");
+        RegisterService rs = new RegisterService();
+        rs.sqlInsert(email, pw, role, name);
 
     }
 
