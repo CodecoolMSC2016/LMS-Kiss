@@ -9,6 +9,7 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Java EE 6-Java EE 6" />
           <element id="library" level="project" name="mysql-connector-java-5.1.41-bin" />
+          <element id="library" level="project" name="jackson-annotations-2.8.0" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="LMS-Kiss/web/Web" />
