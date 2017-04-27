@@ -79,4 +79,21 @@
         <servlet-name>DeleteButton</servlet-name>
         <url-pattern>/deletebutton</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateCurriculum</servlet-name>
+        <servlet-class>updatecurriculum.UpdateCurriculum</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateCurriculum</servlet-name>
+        <url-pattern>/updateCurriculum</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Addcontent</servlet-name>
+        <servlet-class>addcontent.Addcontent</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Addcontent</servlet-name>
+        <url-pattern>/addContent</url-pattern>
+    </servlet-mapping>
+
 </web-app>
