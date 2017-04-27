@@ -60,7 +60,7 @@
         <input class="change-user-name" type="text" id="changeuser" name="changeuser" placeholder="New username"   ><br/>
     </h4>
         <h4 class="change-user">E-mail:
-            <input class="change-email" readonly type="text" placeholder="New e-mail address"   ><br/>
+            <span class="change-email"><%=userName%></span><br/>
         </h4>
         <h4 class="change-role">
             Change role:
